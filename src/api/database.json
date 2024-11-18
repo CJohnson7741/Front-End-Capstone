@@ -1,0 +1,151 @@
+{
+  "Users": [
+    {
+      "id": 1,
+      "isAdmin": true,
+      "userName": "john_doe"
+    },
+    {
+      "id": 2,
+      "isAdmin": false,
+      "userName": "jane_smith"
+    }
+  ],
+  "Tournaments": [
+    {
+      "id": 1,
+      "typeId": 1,
+      "gameId": 1,
+      "bracketSize": 16,
+      "userId": 1,
+      "status": "Active",
+      "round": "Quarterfinals",
+      "name": "AWBW Tournament"
+    },
+    {
+      "id": 2,
+      "typeId": 2,
+      "gameId": 2,
+      "bracketSize": 8,
+      "userId": 2,
+      "status": "Completed",
+      "round": "Finals",
+      "name": "Blood Bowl 2 Tournament"
+    }
+  ],
+  "TournamentTypes": [
+    {
+      "id": 1,
+      "Type": "Single Elimination",
+      "gameId": 1
+    },
+    {
+      "id": 2,
+      "Type": "Double Elimination",
+      "gameId": 2
+    }
+  ],
+  "TournamentParticipants": [
+    {
+      "id": 1,
+      "tournamentId": 1,
+      "participantId": 1,
+      "positionNumber": 1
+    },
+    {
+      "id": 2,
+      "tournamentId": 1,
+      "participantId": 2,
+      "positionNumber": 2
+    },
+    {
+      "id": 3,
+      "tournamentId": 2,
+      "participantId": 1,
+      "positionNumber": 1
+    }
+  ],
+  "Games": [
+    {
+      "id": 1,
+      "gameName": "Advance Wars by Web"
+    },
+    {
+      "id": 2,
+      "gameName": "Blood Bowl 3"
+    }
+  ],
+  "GameObjects": [
+    {
+      "id": 1,
+      "commanderTiers": 3,
+      "mapListId": 1
+    },
+    {
+      "id": 2,
+      "commanderTiers": 1,
+      "mapListId": 2
+    }
+  ],
+  "GamesGameObjects": [
+    {
+      "id": 1,
+      "gameObjects": 1,
+      "tournamentTypesId": 1
+    },
+    {
+      "id": 2,
+      "gameObjects": 2,
+      "tournamentTypesId": 2
+    }
+  ],
+  "Maps": [
+    {
+      "id": 1,
+      "name": "Winterfell",
+      "gameId": 1
+    },
+    {
+      "id": 2,
+      "name": "Kings Landing",
+      "gameId": 2
+    }
+  ],
+  "GameObjectMaps": [
+    {
+      "id": 1,
+      "mapsId": 1,
+      "gameObject": 1
+    },
+    {
+      "id": 2,
+      "mapsId": 2,
+      "gameObject": 2
+    }
+  ],
+  "Commanders": [
+    {
+      "id": 1,
+      "commanderName": "Jon Snow",
+      "commanderTierId": 1
+    },
+    {
+      "id": 2,
+      "commanderName": "Daenerys Targaryen",
+      "commanderTierId": 2
+    }
+  ],
+  "CommanderTierList": [
+    {
+      "id": 1,
+      "commanderId": 1,
+      "gameObjectId": 1
+    },
+    {
+      "id": 2,
+      "commanderId": 2,
+      "gameObjectId": 2
+    }
+  ],
+  "matches": []
+}

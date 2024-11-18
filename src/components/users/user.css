@@ -1,0 +1,90 @@
+/* User Details section */
+.user {
+  padding: 20px;
+  background-color: #182026; /* Dark background for the user section */
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 3rem;
+  color: #ffffff; /* White text for readability */
+}
+
+/* Header with the user's name */
+.user-header {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #03d9ce; /* Cyan color for consistency with the dark theme */
+  margin-bottom: 20px;
+}
+
+/* User info label (for the 'Tournaments' heading) */
+.user-info {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #b0b7be; /* Light gray for subheadings */
+  margin-bottom: 10px;
+}
+
+/* List of tournaments styling */
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Style for each individual tournament */
+ul li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid #232c36; /* Dark border for each tournament item */
+  background-color: #2a353d; /* Dark background for each list item */
+  border-radius: 4px;
+  transition: background-color 0.3s ease; /* Smooth background change on hover */
+}
+
+/* Hover effect for each tournament item */
+ul li:hover {
+  background-color: #36404e; /* Slightly lighter shade on hover */
+}
+
+/* Text style for the tournament details */
+ul li span {
+  font-size: 1rem;
+  color: #ffffff; /* White text for the tournament details */
+}
+
+/* Button styles for editing/removing tournaments (only shown for admins) */
+button {
+  background-color: #03d9ce; /* Cyan button color for consistency */
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  margin-left: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+}
+
+/* Button hover effect */
+button:hover {
+  background-color: #029f96; /* Darker cyan on hover */
+}
+
+/* Disabled button style */
+button:disabled {
+  background-color: #666; /* Gray color for disabled state */
+  cursor: not-allowed;
+}
+
+/* Message for when no tournaments are found */
+span.no-tournaments-message {
+  font-size: 1.2rem;
+  color: #b0b7be; /* Light gray for the no tournaments message */
+  font-style: italic;
+  text-align: center;
+  display: block;
+  margin-top: 20px;
+}

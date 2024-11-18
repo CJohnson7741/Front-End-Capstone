@@ -1,0 +1,78 @@
+/* General theme for the tournament list */
+.theme-dark {
+  background: #0e1217; /* Dark background to match the bracket */
+  color: #ffffff; /* White text for readability */
+  font-family: "Arial", sans-serif; /* Matching font */
+  padding: 20px;
+  border-radius: 8px; /* Rounded corners to match the bracket design */
+  max-width: 800px; /* Optional: limit max width for neat layout */
+  margin: 0 auto; /* Center the content */
+}
+
+.theme-dark h2 {
+  text-align: center;
+  color: #03d9ce; /* Cyan color for title, same as the button */
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.theme-dark ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.theme-dark li {
+  background-color: #182026; /* Dark card background */
+  border: 1px solid #232c36; /* Dark border around each tournament item */
+  padding: 15px;
+  margin-bottom: 12px; /* Space between tournament items */
+  border-radius: 8px; /* Rounded corners for the tournament items */
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.3s; /* Smooth background color change */
+}
+
+/* Hover effect for list items */
+.theme-dark li:hover {
+  background-color: #2a353d; /* Lighter background color on hover */
+}
+
+.theme-dark li a {
+  text-decoration: none; /* Remove underline */
+  color: #03d9ce; /* Cyan link color */
+  font-weight: bold;
+}
+
+.theme-dark li a:hover {
+  color: #029f96; /* Darker cyan on hover */
+}
+
+.theme-dark li div {
+  font-size: 14px;
+  color: #b0b7be; /* Lighter color for participant and status text */
+  margin-top: 10px;
+}
+
+/* Style for the status and participants count text */
+.theme-dark .participants-count {
+  color: #03d9ce;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+/* Error and loading states */
+.theme-dark .loading,
+.theme-dark .error {
+  text-align: center;
+  font-size: 16px;
+  color: #ffcc00; /* Yellow for attention */
+}
+
+.theme-dark .error {
+  color: #e74c3c; /* Red for error messages */
+}
+
+.theme-dark .loading {
+  color: #f39c12; /* Yellow for loading state */
+}

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom"; // Import the useNavigate hook
 import { getAllGames } from "../../services/game";
 import "./createTournament.css";
 
@@ -19,8 +20,7 @@ const createTournament = async (tournamentData) => {
 
     const newTournament = await response.json();
     console.log("Tournament created:", newTournament);
-    // Optionally, navigate to the newly created tournament's details page or update UI
-    return newTournament;
+    return newTournament; // Return the created tournament data
   } catch (error) {
     console.error("Error creating tournament:", error);
   }
@@ -32,6 +32,7 @@ export const CreateTournament = () => {
   const [bracketSize, setBracketSize] = useState(16); // Default value for bracket size
   const [games, setGames] = useState([]); // Store games data
   const [loading, setLoading] = useState(true); // Loading state
+  const navigate = useNavigate(); // Hook to navigate to different pages
 
   // Fetch games from the database
   useEffect(() => {
@@ -75,6 +76,9 @@ export const CreateTournament = () => {
     setTournamentName("");
     setGameId("");
     setBracketSize(16);
+
+    // Redirect the user to the tournament list page
+    navigate("/Tournaments"); // Replace with the correct route for the tournament list page
   };
 
   // If the games are still loading, show loading message

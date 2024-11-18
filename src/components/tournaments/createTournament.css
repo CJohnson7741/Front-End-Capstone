@@ -1,18 +1,21 @@
 /* General styling for the CreateTournament component */
 .create-tournament {
-  background-color: #182026;
+  background-color: #182026; /* Dark background to match theme */
   padding: 30px;
   border-radius: 8px;
   max-width: 600px;
   margin: 0 auto;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  color: #ffffff;
+  color: #ffffff; /* White text for readability */
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Space between elements */
 }
 
 /* Title for the Create Tournament form */
 .create-tournament h2 {
   font-size: 2rem;
-  color: #ffffff;
+  color: #ffffff; /* White color for the title */
   text-align: center;
   margin-bottom: 20px;
 }
@@ -21,34 +24,34 @@
 .create-tournament form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 20px; /* Space between form elements */
 }
 
 /* Label styling */
 .create-tournament label {
   font-size: 1rem;
-  color: #6b798c;
+  color: #6b798c; /* Lighter color for labels */
 }
 
-/* Input field styling */
+/* Input and select field styling */
 .create-tournament input,
 .create-tournament select {
   padding: 10px;
   border-radius: 5px;
-  border: 2px solid #6b798c;
-  background-color: #232c36;
-  color: #ffffff;
+  border: 2px solid #6b798c; /* Light gray border */
+  background-color: #232c36; /* Dark background for input */
+  color: #ffffff; /* White text for readability */
   font-size: 1rem;
   outline: none;
-  transition: border-color 0.3s ease;
+  transition: border-color 0.3s ease; /* Smooth border color transition */
 }
 
 .create-tournament input:focus,
 .create-tournament select:focus {
-  border-color: #03d9ce; /* Light cyan on focus */
+  border-color: #03d9ce; /* Cyan color on focus */
 }
 
-/* Bracket size input field */
+/* Bracket size input field (number input) */
 .create-tournament input[type="number"] {
   -moz-appearance: textfield;
   appearance: textfield;
@@ -62,40 +65,40 @@
 
 /* Button styling */
 .create-tournament button {
-  background-color: #03d9ce;
+  background-color: #03d9ce; /* Cyan background for the button */
   color: white;
-  border: 2px solid #03d9ce;
+  border: 2px solid #03d9ce; /* Cyan border */
   padding: 12px 20px;
   font-size: 1rem;
   font-weight: bold;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  transition: background-color 0.3s ease, border-color 0.3s ease; /* Smooth transitions */
   align-self: center;
 }
 
 .create-tournament button:hover {
-  background-color: #029f96;
-  border-color: #029f96;
+  background-color: #029f96; /* Darker cyan on hover */
+  border-color: #029f96; /* Matching border color on hover */
 }
 
 .create-tournament button:disabled {
-  background-color: #444;
-  color: #888;
-  border-color: #444;
-  cursor: not-allowed;
+  background-color: #444; /* Dark gray background for disabled button */
+  color: #888; /* Lighter gray text */
+  border-color: #444; /* Dark gray border for disabled state */
+  cursor: not-allowed; /* Disable pointer cursor */
 }
 
 /* Optional: Styling for the loading message */
 .create-tournament .loading {
   text-align: center;
   font-size: 1.2rem;
-  color: #ffcc00;
+  color: #ffcc00; /* Yellow for loading text */
 }
 
-/* Optional: Error message styling (if you have error messages) */
+/* Optional: Error message styling (if error messages are used) */
 .create-tournament .error-message {
-  color: #e03e3e; /* Red for errors */
+  color: #e03e3e; /* Red color for error messages */
   font-size: 1rem;
   text-align: center;
 }

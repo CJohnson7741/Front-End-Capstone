@@ -1,299 +1,4 @@
-.theme {
-  height: 100%;
-  width: 100%;
-  position: absolute;
-}
-.bracket {
-  padding: 40px;
-  margin: 5px;
-}
-.bracket {
-  display: flex;
-  flex-direction: row;
-  position: relative;
-}
-.column {
-  display: flex;
-  flex-direction: column;
-  min-height: 100%;
-  justify-content: space-around;
-  align-content: center;
-}
-.match {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  min-width: 240px;
-  max-width: 240px;
-  height: 62px;
-  margin: 12px 24px 12px 0;
-}
-.match .match-top {
-  border-radius: 2px 2px 0 0;
-}
-.match .match-bottom {
-  border-radius: 0 0 2px 2px;
-}
-.match .team {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  border: 1px solid black;
-  position: relative;
-}
-.match .team span {
-  padding-left: 8px;
-}
-.match .team span:last-child {
-  padding-right: 8px;
-}
-.match .team .score {
-  margin-left: auto;
-}
-.match .team:first-child {
-  margin-bottom: -1px;
-}
-.match-lines {
-  display: block;
-  position: absolute;
-  top: 50%;
-  bottom: 0;
-  margin-top: 0px;
-  right: -1px;
-}
-.match-lines .line {
-  background: red;
-  position: absolute;
-}
-.match-lines .line.one {
-  height: 1px;
-  width: 12px;
-}
-.match-lines .line.two {
-  height: 44px;
-  width: 1px;
-  left: 11px;
-}
-.match-lines.alt {
-  left: -12px;
-}
-.match:nth-child(even) .match-lines .line.two {
-  transform: translate(0, -100%);
-}
-.column:first-child .match-lines.alt {
-  display: none;
-}
-.column:last-child .match-lines {
-  display: none;
-}
-.column:last-child .match-lines.alt {
-  display: block;
-}
-.column:nth-child(2) .match-lines .line.two {
-  height: 88px;
-}
-.column:nth-child(3) .match-lines .line.two {
-  height: 175px;
-}
-.column:nth-child(4) .match-lines .line.two {
-  height: 262px;
-}
-.column:nth-child(5) .match-lines .line.two {
-  height: 349px;
-}
-.disable-image .image,
-.disable-seed .seed,
-.disable-name .name,
-.disable-score .score {
-  display: none !important;
-}
-.disable-borders {
-  border-width: 0px !important;
-}
-.disable-borders .team {
-  border-width: 0px !important;
-}
-.disable-seperator .match-top {
-  border-bottom: 0px !important;
-}
-.disable-seperator .match-bottom {
-  border-top: 0px !important;
-}
-.disable-seperator .team:first-child {
-  margin-bottom: 0px;
-}
-/* Dark Theme */
-.theme-dark {
-  background: #0e1217;
-  border-color: #040607;
-}
-.theme-dark .match-lines .line {
-  background: #36404e;
-}
-.theme-dark .team {
-  background: #182026;
-  border-color: #232c36;
-  color: #6b798c;
-}
-.theme-dark .winner-top .match-top,
-.theme-dark .winner-bottom .match-bottom {
-  background: #232c36;
-  color: #e3e8ef;
-  border-color: #36404e;
-  z-index: 1;
-}
-.theme-dark .winner-top .match-top .score,
-.theme-dark .winner-bottom .match-bottom .score {
-  color: #03d9ce;
-}
-.theme-dark .match .seed {
-  font-size: 12px;
-  min-width: 10px;
-}
-.theme-dark .match .score {
-  font-size: 14px;
-}
-.name.winner {
-  font-weight: bold;
-  color: green;
-}
-/* Dark theme settings */
-.theme-dark {
-  background: #0e1217;
-  border-color: #040607;
-}
-
-/* Ensure text in matches is white */
-.theme-dark .match .team .name {
-  color: #ffffff; /* White text for team names */
-}
-
-.theme-dark .match .team .name {
-  color: #ffffff; /* Brighten the text color */
-}
-
-.theme-dark .match .team .score {
-  color: #ffcc00; /* Yellow text for scores */
-}
-
-/* Match lines and other styles */
-.theme-dark .match-lines .line {
-  background: #8a9ba8; /* A lighter gray color for the lines */
-}
-
-.theme-dark .match .team {
-  background: #182026;
-  border-color: #232c36;
-  color: #6b798c;
-}
-
-.theme-dark .match .score {
-  font-size: 14px;
-}
-
-.theme-dark .match .seed {
-  font-size: 12px;
-}
-
-.theme-dark .match-actions .button {
-  color: black;
-}
-
-/* Dark theme adjustments for the title and round headers */
-.theme-dark h2,
-.theme-dark h3 {
-  color: #ffffff; /* Set title and round headers to white */
-}
-
-/* Optional: You can also add some style to make them stand out more */
-.theme-dark h2 {
-  font-size: 2em; /* Increase the font size of the title */
-  font-weight: bold; /* Make the title bold */
-  margin-bottom: 20px;
-}
-
-.theme-dark h3 {
-  font-size: 1.5em; /* Increase the font size of the round headers */
-  font-weight: normal; /* Keep the round header weight normal */
-  margin-bottom: 15px;
-}
-
-/* Styling for buttons in dark theme */
-.theme-dark .match-actions button {
-  background-color: #03d9ce; /* Bright cyan for background */
-  color: #ffffff; /* White text for readability */
-  border: 2px solid #03d9ce; /* Border that matches the background */
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-size: 14px;
-  cursor: pointer; /* Make the cursor a pointer to show it's clickable */
-  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
-}
-
-/* Button hover effect */
-.theme-dark .match-actions button:hover {
-  background-color: #029f96; /* Darken the background on hover */
-  color: #ffffff; /* Keep text white on hover */
-  border-color: #029f96; /* Border matches the new background */
-}
-
-/* Optional: Disabled button styling */
-.theme-dark .match-actions button:disabled {
-  background-color: #444; /* A darker gray for disabled state */
-  color: #888; /* Lighter gray text */
-  border: 2px solid #444; /* Match border to background */
-  cursor: not-allowed; /* Show not-allowed cursor */
-}
-
-.theme {
-  height: 100%;
-  width: 100%;
-  position: relative; /* Ensure the layout is not absolute */
-  display: flex;
-  flex-direction: column; /* Stack content vertically */
-  padding-top: 20px; /* Add some padding to the top */
-}
-
-.admin-buttons {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 40px; /* Add some padding for better spacing */
-  background-color: #232c36; /* You can adjust this to fit your theme */
-  margin-bottom: 20px; /* Space between the buttons and the tournament bracket */
-}
-
-.admin-buttons button {
-  background-color: #03d9ce; /* Cyan background */
-  color: #fff; /* White text */
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.admin-buttons button:hover {
-  background-color: #029f96; /* Darken the background on hover */
-}
-
-.bracket {
-  display: flex;
-  flex-direction: row;
-  position: relative;
-  padding: 40px;
-  margin: 5px;
-}
-
-.column {
-  display: flex;
-  flex-direction: column;
-  min-height: 100%;
-  justify-content: space-around;
-  align-content: center;
-}
-
-/* Other styles for the tournament bracket layout... */
-
+/* General Styles */
 .theme {
   height: 100%;
   min-height: 100vh; /* Ensures the container takes at least full viewport height */
@@ -311,7 +16,7 @@
   justify-content: space-between;
   padding: 10px 40px; /* Add space around the buttons */
   background-color: #232c36; /* Dark background for the admin buttons */
-  margin-bottom: 20px; /* Give some space between the buttons and the tournament bracket */
+  margin-bottom: 20px; /* Space between the buttons and the tournament bracket */
   border-radius: 8px; /* Optional: rounded corners for the buttons' container */
 }
 
@@ -329,6 +34,7 @@
   background-color: #029f96; /* Darker cyan on hover */
 }
 
+/* Bracket Styling */
 .bracket {
   display: flex;
   flex-direction: row;
@@ -336,6 +42,7 @@
   padding: 40px;
   margin: 5px;
   flex-grow: 1; /* Allow this section to grow and take available space */
+  margin-bottom: 50px; /* Space between the bracket and the buttons */
 }
 
 .column {
@@ -346,9 +53,101 @@
   align-content: center;
 }
 
-/* Ensures proper alignment of buttons at the bottom */
-.theme-dark {
-  background: #0e1217; /* Keep the same dark background theme */
+/* Match Styling for Dark Theme */
+.theme-dark .match-lines .line {
+  background: #8a9ba8; /* Lighter gray for lines */
 }
 
-/* Other existing styles */
+.theme-dark .team {
+  background: #182026;
+  border-color: #232c36;
+  color: #6b798c;
+  display: flex;
+  justify-content: space-between; /* Ensures the team name is on the left and score on the right */
+}
+
+.theme-dark .match-actions button {
+  background-color: #03d9ce;
+  color: #ffffff;
+  border: 2px solid #03d9ce;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.theme-dark .match-actions button:hover {
+  background-color: #029f96;
+}
+
+.theme-dark h2,
+.theme-dark h3 {
+  color: #ffffff;
+}
+
+.theme-dark h2 {
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.theme-dark h3 {
+  font-size: 1.5em;
+  margin-bottom: 15px;
+}
+
+/* Button Styles for Dark Theme */
+.theme-dark .match-actions button:disabled {
+  background-color: #444;
+  color: #888;
+  border: 2px solid #444;
+  cursor: not-allowed;
+}
+
+/* Match Winner Styling */
+.name.winner {
+  font-weight: bold;
+  color: green;
+}
+
+/* Keep Yellow Score and White Names in Dark Theme */
+.theme-dark .match .team .name {
+  color: #ffffff; /* White text for team names */
+  padding-left: 8px; /* Padding to align with the first button */
+}
+
+.theme-dark .match .team .score {
+  color: #ffcc00; /* Yellow text for scores */
+  margin-left: auto; /* Pushes the score to the right side */
+  padding-right: 8px; /* Padding to align with the right edge */
+}
+
+/* Hide unnecessary content */
+.disable-image .image,
+.disable-seed .seed,
+.disable-name .name,
+.disable-score .score {
+  display: none !important;
+}
+
+/* Disable Borders */
+.disable-borders {
+  border-width: 0px !important;
+}
+
+.disable-borders .team {
+  border-width: 0px !important;
+}
+
+.disable-seperator .match-top {
+  border-bottom: 0px !important;
+}
+
+.disable-seperator .match-bottom {
+  border-top: 0px !important;
+}
+
+.disable-seperator .team:first-child {
+  margin-bottom: 0px;
+}

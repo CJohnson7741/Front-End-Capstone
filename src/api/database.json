@@ -9,8 +9,99 @@
       "id": 2,
       "isAdmin": false,
       "userName": "jane_smith"
+    },
+    {
+      "id": 3,
+      "isAdmin": false,
+      "userName": "mike_johnson"
+    },
+    {
+      "id": 4,
+      "isAdmin": false,
+      "userName": "susan_lee"
+    },
+    {
+      "id": 5,
+      "isAdmin": false,
+      "userName": "emily_williams"
+    },
+    {
+      "id": 6,
+      "isAdmin": false,
+      "userName": "david_brown"
+    },
+    {
+      "id": 7,
+      "isAdmin": false,
+      "userName": "james_miller"
+    },
+    {
+      "id": 8,
+      "isAdmin": false,
+      "userName": "elizabeth_davis"
+    },
+    {
+      "id": 9,
+      "isAdmin": false,
+      "userName": "chris_moore"
+    },
+    {
+      "id": 10,
+      "isAdmin": false,
+      "userName": "patricia_taylor"
+    },
+    {
+      "id": 11,
+      "isAdmin": false,
+      "userName": "robert_anderson"
+    },
+    {
+      "id": 12,
+      "isAdmin": false,
+      "userName": "jennifer_thomas"
+    },
+    {
+      "id": 13,
+      "isAdmin": false,
+      "userName": "matthew_jackson"
+    },
+    {
+      "id": 14,
+      "isAdmin": false,
+      "userName": "sarah_white"
+    },
+    {
+      "id": 15,
+      "isAdmin": false,
+      "userName": "william_harris"
+    },
+    {
+      "id": 16,
+      "isAdmin": false,
+      "userName": "amanda_martin"
+    },
+    {
+      "id": 17,
+      "isAdmin": false,
+      "userName": "joseph_lee"
+    },
+    {
+      "id": 18,
+      "isAdmin": false,
+      "userName": "nancy_clark"
+    },
+    {
+      "id": 19,
+      "isAdmin": false,
+      "userName": "daniel_rodriquez"
+    },
+    {
+      "id": 20,
+      "isAdmin": false,
+      "userName": "laura_garcia"
     }
   ],
+
   "Tournaments": [
     {
       "id": 1,
@@ -20,7 +111,8 @@
       "userId": 1,
       "status": "Active",
       "round": "Quarterfinals",
-      "name": "AWBW Tournament"
+      "name": "AWBW Tournament",
+      "isStarted": false
     },
     {
       "id": 2,
@@ -30,9 +122,77 @@
       "userId": 2,
       "status": "Completed",
       "round": "Finals",
-      "name": "Blood Bowl 2 Tournament"
+      "name": "Blood Bowl 2 Tournament",
+      "isStarted": true
+    },
+    {
+      "id": 3,
+      "typeId": 1,
+      "gameId": 1,
+      "bracketSize": 16,
+      "userId": 1,
+      "status": "Active",
+      "round": "Quarterfinals",
+      "name": "AWBW Regional Championship",
+      "isStarted": false
+    },
+    {
+      "id": 4,
+      "typeId": 2,
+      "gameId": 2,
+      "bracketSize": 8,
+      "userId": 3,
+      "status": "Completed",
+      "round": "Finals",
+      "name": "Blood Bowl 2 Grand Final",
+      "isStarted": true
+    },
+    {
+      "id": 5,
+      "typeId": 1,
+      "gameId": 1,
+      "bracketSize": 8,
+      "userId": 4,
+      "status": "Active",
+      "round": "Round 1",
+      "name": "AWBW Invitational",
+      "isStarted": true
+    },
+    {
+      "id": 6,
+      "typeId": 2,
+      "gameId": 2,
+      "bracketSize": 4,
+      "userId": 5,
+      "status": "Active",
+      "round": "Round 1",
+      "name": "Blood Bowl 2 Clash of Titans",
+      "isStarted": false
+    },
+    {
+      "id": 7,
+      "typeId": 1,
+      "gameId": 1,
+      "bracketSize": 16,
+      "userId": 6,
+      "status": "Active",
+      "round": "Round 1",
+      "name": "AWBW Open",
+      "isStarted": true
+    },
+    {
+      "id": 8,
+      "typeId": 2,
+      "gameId": 2,
+      "bracketSize": 8,
+      "userId": 7,
+      "status": "Active",
+      "round": "Quarterfinals",
+      "name": "Blood Bowl 2 Empty Tournament",
+      "isStarted": false
     }
   ],
+
   "TournamentTypes": [
     {
       "id": 1,
@@ -45,6 +205,7 @@
       "gameId": 2
     }
   ],
+
   "TournamentParticipants": [
     {
       "id": 1,
@@ -60,11 +221,174 @@
     },
     {
       "id": 3,
+      "tournamentId": 1,
+      "participantId": 3,
+      "positionNumber": 3
+    },
+    {
+      "id": 4,
+      "tournamentId": 1,
+      "participantId": 4,
+      "positionNumber": 4
+    },
+    {
+      "id": 5,
       "tournamentId": 2,
-      "participantId": 1,
+      "participantId": 5,
       "positionNumber": 1
+    },
+    {
+      "id": 6,
+      "tournamentId": 2,
+      "participantId": 6,
+      "positionNumber": 2
+    },
+    {
+      "id": 7,
+      "tournamentId": 2,
+      "participantId": 7,
+      "positionNumber": 3
+    },
+    {
+      "id": 8,
+      "tournamentId": 2,
+      "participantId": 8,
+      "positionNumber": 4
+    },
+    {
+      "id": 9,
+      "tournamentId": 3,
+      "participantId": 9,
+      "positionNumber": 1
+    },
+    {
+      "id": 10,
+      "tournamentId": 3,
+      "participantId": 10,
+      "positionNumber": 2
+    },
+    {
+      "id": 11,
+      "tournamentId": 3,
+      "participantId": 11,
+      "positionNumber": 3
+    },
+    {
+      "id": 12,
+      "tournamentId": 3,
+      "participantId": 12,
+      "positionNumber": 4
+    },
+    {
+      "id": 13,
+      "tournamentId": 4,
+      "participantId": 13,
+      "positionNumber": 1
+    },
+    {
+      "id": 14,
+      "tournamentId": 4,
+      "participantId": 14,
+      "positionNumber": 2
+    },
+    {
+      "id": 15,
+      "tournamentId": 4,
+      "participantId": 15,
+      "positionNumber": 3
+    },
+    {
+      "id": 16,
+      "tournamentId": 4,
+      "participantId": 16,
+      "positionNumber": 4
+    },
+    {
+      "id": 17,
+      "tournamentId": 5,
+      "participantId": 17,
+      "positionNumber": 1
+    },
+    {
+      "id": 18,
+      "tournamentId": 5,
+      "participantId": 18,
+      "positionNumber": 2
+    },
+    {
+      "id": 19,
+      "tournamentId": 5,
+      "participantId": 19,
+      "positionNumber": 3
+    },
+    {
+      "id": 20,
+      "tournamentId": 5,
+      "participantId": 20,
+      "positionNumber": 4
+    },
+    {
+      "id": 21,
+      "tournamentId": 6,
+      "participantId": 21,
+      "positionNumber": 1
+    },
+    {
+      "id": 22,
+      "tournamentId": 6,
+      "participantId": 22,
+      "positionNumber": 2
+    },
+    {
+      "id": 23,
+      "tournamentId": 6,
+      "participantId": 23,
+      "positionNumber": 3
+    },
+    {
+      "id": 24,
+      "tournamentId": 6,
+      "participantId": 24,
+      "positionNumber": 4
+    },
+    {
+      "id": 25,
+      "tournamentId": 7,
+      "participantId": 25,
+      "positionNumber": 1
+    },
+    {
+      "id": 26,
+      "tournamentId": 7,
+      "participantId": 26,
+      "positionNumber": 2
+    },
+    {
+      "id": 27,
+      "tournamentId": 7,
+      "participantId": 27,
+      "positionNumber": 3
+    },
+    {
+      "id": 28,
+      "tournamentId": 7,
+      "participantId": 28,
+      "positionNumber": 4
+    },
+    {
+      "id": 29,
+      "tournamentId": 7,
+      "participantId": 29,
+      "positionNumber": 5
+    },
+    {
+      "id": 30,
+      "tournamentId": 7,
+      "participantId": 30,
+      "positionNumber": 6
     }
   ],
+
   "Games": [
     {
       "id": 1,
@@ -145,6 +469,24 @@
       "id": 2,
       "commanderId": 2,
       "gameObjectId": 2
+    }
+  ],
+  "TournamentMatches": [
+    {
+      "id": 1,
+      "tournamentId": 1,
+      "participant1": 1,
+      "participant2": 2,
+      "round": "Round 1",
+      "winner": null
+    },
+    {
+      "id": 2,
+      "tournamentId": 1,
+      "participant1": 3,
+      "participant2": 4,
+      "round": "Round 1",
+      "winner": null
     }
   ],
   "matches": []

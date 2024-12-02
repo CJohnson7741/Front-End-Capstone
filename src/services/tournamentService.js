@@ -96,7 +96,6 @@ export const createTournament = async (tournamentData) => {
     }
 
     const newTournament = await response.json();
-    console.log("Tournament created:", newTournament);
   } catch (error) {
     console.error("Error creating tournament:", error);
   }

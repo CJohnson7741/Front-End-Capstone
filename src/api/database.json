@@ -101,7 +101,6 @@
       "userName": "laura_garcia"
     }
   ],
-
   "Tournaments": [
     {
       "id": 1,
@@ -112,7 +111,7 @@
       "status": "Active",
       "round": "Quarterfinals",
       "name": "AWBW Tournament",
-      "isStarted": false
+      "isStarted": true
     },
     {
       "id": 2,
@@ -134,7 +133,7 @@
       "status": "Active",
       "round": "Quarterfinals",
       "name": "AWBW Regional Championship",
-      "isStarted": false
+      "isStarted": true
     },
     {
       "id": 4,
@@ -192,7 +191,6 @@
       "isStarted": false
     }
   ],
-
   "TournamentTypes": [
     {
       "id": 1,
@@ -205,7 +203,6 @@
       "gameId": 2
     }
   ],
-
   "TournamentParticipants": [
     {
       "id": 1,
@@ -388,7 +385,6 @@
       "positionNumber": 6
     }
   ],
-
   "Games": [
     {
       "id": 1,
@@ -487,7 +483,8 @@
       "participant2": 4,
       "round": "Round 1",
       "winner": null
-    }
+    },
+    []
   ],
   "matches": []
 }

@@ -9,6 +9,8 @@ import {
   getTournamentByName,
   deleteTournament,
   updateTournamentName,
+  updateTournamentStatus,
+  fetchTournamentById, // new service function for updating tournament status
 } from "../../services/tournamentService";
 import { generateNextRoundMatches } from "./nextRound";
 
@@ -20,6 +22,7 @@ export const TournamentBracket = () => {
   const [tournamentId, setTournamentId] = useState(null);
   const [tournamentName, setTournamentName] = useState(initialTournamentName);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [isStarted, setIsStarted] = useState(false);
   const [users, setUsers] = useState([]);
   const navigate = useNavigate();
 
@@ -40,14 +43,15 @@ export const TournamentBracket = () => {
         if (!tournamentIdObj || tournamentIdObj.length === 0) {
           throw new Error("Tournament not found");
         }
-        const currentTournamentId = tournamentIdObj[0]?.id;
-        setTournamentId(currentTournamentId);
+        const currentTournament = tournamentIdObj[0];
+        setTournamentId(currentTournament.id);
+        setIsStarted(currentTournament.isStarted); // Track if the tournament has started
 
-        const allUsers = await fetchUsersForTournament(currentTournamentId);
+        const allUsers = await fetchUsersForTournament(currentTournament.id);
         setUsers(allUsers);
 
         const allRounds = await generateTournamentBrackets(
-          currentTournamentId,
+          currentTournament.id,
           allUsers
         );
         setRounds(allRounds);
@@ -106,52 +110,124 @@ export const TournamentBracket = () => {
     }
   };
 
-  if (loading) return <div>Loading bracket...</div>;
-  if (error) return <div>{error}</div>;
+  const handleStartTournament = async () => {
+    try {
+      const updatedTournament = await updateTournamentStatus(
+        tournamentId,
+        true
+      );
+      setIsStarted(updatedTournament.isStarted);
+      setTournamentName(updatedTournament.name);
+      await saveGeneratedMatches();
+      alert("Tournament started successfully!");
+    } catch (error) {
+      console.error("Error starting tournament:", error);
+      alert("Failed to start tournament");
+    }
+  };
 
-  const handleMatchWinner = (roundIndex, matchIndex, winner) => {
-    setRounds((prevRounds) => {
-      const newRounds = [...prevRounds];
-      newRounds[roundIndex][matchIndex].winner = winner;
-
-      const roundIsComplete = newRounds[roundIndex].every(
-        (match) => match.winner !== null
+  const saveGeneratedMatches = async () => {
+    try {
+      const matches = rounds.flatMap((round) =>
+        round.map((match) => ({
+          tournamentId,
+          participant1: match.user1.id,
+          participant2: match.user2.id,
+          round: match.round,
+          winner: null,
+        }))
       );
 
-      if (roundIsComplete) {
-        const winners = newRounds[roundIndex]
-          .map((match) => match.winner)
-          .filter((winner) => winner != null)
-          .map((winner) => ({ userName: winner }));
+      await fetch("http://localhost:8088/TournamentMatches", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(matches),
+      });
+    } catch (error) {
+      console.error("Error saving generated matches:", error);
+    }
+  };
 
-        if (winners.length > 1) {
-          const nextRound = generateRoundMatches(winners);
-          if (newRounds.length === roundIndex + 1) {
-            newRounds.push(nextRound);
-          } else {
-            newRounds[roundIndex + 1] = nextRound;
-          }
-        } else {
-          alert(`Tournament winner: ${winners[0].userName}`);
-        }
+  const handleMatchWinner = async (roundIndex, matchIndex, winner) => {
+    try {
+      const updatedMatch = {
+        ...rounds[roundIndex][matchIndex],
+        winner: winner,
+      };
+
+      // Ensure the match ID exists and is not undefined
+      if (!updatedMatch.id) {
+        throw new Error("Match ID is missing");
       }
 
-      return newRounds;
-    });
+      // Update the match in the database
+      const response = await fetch(
+        `http://localhost:8088/TournamentMatches/${updatedMatch.id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(updatedMatch),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to update the match");
+      }
+
+      // Update rounds in the state
+      const updatedRounds = [...rounds];
+      updatedRounds[roundIndex][matchIndex] = updatedMatch;
+
+      // Check if it's the last round
+      if (isLastRoundInTournament(updatedRounds, roundIndex)) {
+        const winners = updatedRounds[roundIndex].map((match) => match.winner);
+        const nextRoundMatches = generateNextRoundMatches(
+          winners,
+          roundIndex + 1
+        );
+        updatedRounds.push(nextRoundMatches);
+      }
+
+      setRounds(updatedRounds);
+      alert(`${winner} wins!`);
+    } catch (error) {
+      console.error("Error saving winner:", error);
+      alert("Failed to save the winner.");
+    }
   };
+
+  const isLastRoundInTournament = (rounds, currentRoundIndex) => {
+    return currentRoundIndex === rounds.length - 1;
+  };
+
+  if (loading) return <div>Loading bracket...</div>;
+  if (error) return <div>{error}</div>;
 
   return (
     <div className="theme theme-dark">
       {isAdmin && (
         <div className="admin-buttons">
-          <button onClick={handleEditTournamentName} className="edit-btn">
-            Edit Tournament Name
-          </button>
-          <button onClick={handleDeleteTournament} className="delete-btn">
-            Delete Tournament
-          </button>
+          {!isStarted && (
+            <button onClick={handleStartTournament} className="start-btn">
+              Start Tournament
+            </button>
+          )}
+
+          <div className="admin-actions">
+            <button onClick={handleEditTournamentName} className="edit-btn">
+              Edit Tournament Name
+            </button>
+            <button onClick={handleDeleteTournament} className="delete-btn">
+              Delete Tournament
+            </button>
+          </div>
         </div>
       )}
+
       <h2>{tournamentName} Bracket</h2>
       <div className="bracket">
         {rounds.length === 0 ? (

@@ -5,7 +5,7 @@ export const getAllTournaments = () => {
 };
 
 export const getTournamentById = (tournamentId) => {
-  return fetch(`http://localhost:8088/tournamnets?${tournamentId}`).then(
+  return fetch(`http://localhost:8088/tournaments?${tournamentId}`).then(
     (res) => res.json()
   );
 };
@@ -155,5 +155,64 @@ export const updateTournamentName = async (tournamentId, newName) => {
   } catch (error) {
     console.error(error);
     throw new Error("Failed to update tournament name");
+  }
+};
+
+// tournamentService.js
+
+export const updateTournamentStatus = async (tournamentId, isStarted) => {
+  try {
+    // Step 1: Fetch the current tournament data by tournamentId
+    const response = await fetch(
+      `http://localhost:8088/Tournaments/${tournamentId}`
+    );
+    if (!response.ok) {
+      throw new Error("Failed to fetch tournament data");
+    }
+    const tournamentData = await response.json();
+
+    // Step 2: Update the status and keep the rest of the data intact
+    const updatedTournament = { ...tournamentData, isStarted };
+
+    // Step 3: Send the updated tournament data back to the server
+    const updateResponse = await fetch(
+      `http://localhost:8088/Tournaments/${tournamentId}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedTournament), // Send the full tournament object
+      }
+    );
+
+    if (!updateResponse.ok) {
+      throw new Error("Failed to update tournament status");
+    }
+
+    // Step 4: Return the updated tournament data
+    return await updateResponse.json();
+  } catch (error) {
+    console.error("Error updating tournament status:", error);
+    throw error;
+  }
+};
+
+export const fetchTournamentById = async (tournamentId) => {
+  try {
+    const response = await fetch(
+      `http://localhost:8088/Tournaments/${tournamentId}`
+    );
+    if (!response.ok) {
+      throw new Error("Failed to fetch tournament details");
+    }
+    const tournamentData = await response.json();
+    if (!tournamentData) {
+      throw new Error("Tournament not found");
+    }
+    return tournamentData; // Return the full tournament object
+  } catch (error) {
+    console.error("Error fetching tournament details:", error);
+    throw error;
   }
 };
